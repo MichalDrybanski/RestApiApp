@@ -1,25 +1,24 @@
 package com.system4.dto;
 
-import com.system4.dto.UserDTO;
-
 import java.util.List;
 
 public class UsersDTO {
-    private List<UserDTO> userDTOS;
+    private List<UserDTO> users;
 
     public UsersDTO() {
     }
     public UsersDTO(List<UserDTO> userDTOS) {
-        this.userDTOS = userDTOS;
+        this.users = userDTOS;
     }
     public List<UserDTO> getUsers() {
-        return userDTOS;
+        return users;
     }
 
     @Override
     public String toString() {
         return "Users{" +
-                "users=" + userDTOS +
+                "users=" + users +
                 '}';
     }
+
 }

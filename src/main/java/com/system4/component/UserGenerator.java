@@ -17,12 +17,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
-public class UserGeneratorComponent {
+public class UserGenerator {
     private final UserFactory userFactory;
     private final UserRepository repository;
     private final ObjectMapper objectMapper;
     @Autowired
-    public UserGeneratorComponent(UserFactory userFactory, UserRepository repository) {
+    public UserGenerator(UserFactory userFactory, UserRepository repository) {
         this.userFactory = userFactory;
         this.repository = repository;
         objectMapper = new ObjectMapper();
@@ -48,7 +48,7 @@ public class UserGeneratorComponent {
 
     public List<User> generateUsers(){
         List<User> users = new ArrayList<>();
-        for(int i = 0; i < 50_000; i++){
+        for(int i = 0; i < 50; i++){
             User user = userFactory.createUser();
             users.add(user);
         }

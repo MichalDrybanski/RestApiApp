@@ -32,4 +32,5 @@ public class UserDTO {
     public String getLogin() {
         return login;
     }
+
 }

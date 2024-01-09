@@ -1,6 +1,7 @@
 package com.system4.service;
 
 import com.system4.dto.UserDTO;
+import com.system4.dto.UsersDTO;
 import com.system4.model.User;
 import com.system4.repository.UserRepository;
 import org.springframework.stereotype.Service;
@@ -16,9 +17,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public void createUser(UserDTO userDTO){
-        User user = new User(userDTO.getName(), userDTO.getSurname(), userDTO.getLogin());
-        userRepository.save(user);
+    public void createUsers(UsersDTO usersDTO){
+        List<User> users = new ArrayList<>();
+        List<UserDTO> userDTOS = usersDTO.getUsers();
+        for(UserDTO userDTO : userDTOS){
+            users.add(new User(userDTO.getName(), userDTO.getSurname(), userDTO.getLogin()));
+        }
+        userRepository.saveAll(users);
     }
     public List<UserDTO> getUsers(){
         List<UserDTO> usersDTO = new ArrayList<>();
@@ -28,4 +33,5 @@ public class UserService {
         }
         return usersDTO;
     }
+
 }
