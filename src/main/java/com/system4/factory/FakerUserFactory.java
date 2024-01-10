@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 @Primary
 public class FakerUserFactory implements UserFactory{
-    private Faker faker;
+    private final Faker faker;
     @Autowired
     public FakerUserFactory(Faker faker) {
         this.faker = faker;

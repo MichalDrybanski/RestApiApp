@@ -4,6 +4,8 @@ import com.system4.dto.UserDTO;
 import com.system4.dto.UsersDTO;
 import com.system4.model.User;
 import com.system4.repository.UserRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,7 +13,7 @@ import java.util.List;
 
 @Service
 public class UserService {
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
@@ -25,13 +27,10 @@ public class UserService {
         }
         userRepository.saveAll(users);
     }
-    public List<UserDTO> getUsers(){
-        List<UserDTO> usersDTO = new ArrayList<>();
-        List<User> users = userRepository.findAll();
-        for (User user : users) {
-            usersDTO.add(new UserDTO(user.getName(), user.getSurname(), user.getLogin()));
-        }
-        return usersDTO;
-    }
 
+    public Page<UserDTO> getUsers(String searchTerm, Pageable pageable) {
+        return userRepository.findByNameContainingOrSurnameContainingOrLoginContaining(
+                searchTerm, searchTerm, searchTerm, pageable)
+                .map(user -> new UserDTO(user.getName(), user.getSurname(), user.getLogin()));
+    }
 }

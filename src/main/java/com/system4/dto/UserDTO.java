@@ -1,7 +1,6 @@
 package com.system4.dto;
 
 import com.system4.model.User;
-
 public class UserDTO {
     private String name;
     private String surname;
@@ -32,5 +31,4 @@ public class UserDTO {
     public String getLogin() {
         return login;
     }
-
 }

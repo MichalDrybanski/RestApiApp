@@ -23,9 +23,9 @@ public class User {
         this.surname = surname;
         this.login = login;
     }
-    public UserDTO toDTO() {
-        return new UserDTO(this.name, this.surname, this.login);
-    }
+//    public UserDTO toDTO() {
+//        return new UserDTO(this.name, this.surname, this.login);
+//    }
 
     public String getName() {
         return name;
