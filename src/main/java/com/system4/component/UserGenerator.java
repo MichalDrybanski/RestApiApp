@@ -40,12 +40,10 @@ public class UserGenerator {
                                 .toList();
         objectMapper.writeValue(new File("generatedUsers.json"), new UsersDTO(usersDTOs));
     }
-
     @PreDestroy
     public void preDestroy() {
         System.out.println("UserGeneratorComponent destroyed");
     }
-
     public List<User> generateUsers(){
         List<User> users = new ArrayList<>();
         for(int i = 0; i < 50; i++){
