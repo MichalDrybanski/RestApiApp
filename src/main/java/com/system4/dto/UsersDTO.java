@@ -20,5 +20,4 @@ public class UsersDTO {
                 "users=" + users +
                 '}';
     }
-
 }

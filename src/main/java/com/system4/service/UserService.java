@@ -33,8 +33,9 @@ public class UserService {
     public Page<UserDTO> getUsers(String searchTerm, Pageable pageable) {
         return userRepository.findByNameContainingOrSurnameContainingOrLoginContaining(
                 searchTerm, searchTerm, searchTerm, pageable)
-                .map(user -> new UserDTO(user.getName(), user.getSurname() + "_" +generateMD5(user.getName()), user.getLogin()));
+                .map(user -> new UserDTO(user.getName(), user.getSurname() + "_" +generateMD5(user.getSurname()), user.getLogin()));
     }
+
     public String generateMD5(String name) {
         try {
             MessageDigest md = MessageDigest.getInstance("MD5");

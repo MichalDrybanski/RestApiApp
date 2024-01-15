@@ -1,6 +1,5 @@
 package com.system4.model;
 
-import com.system4.dto.UserDTO;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,10 +22,6 @@ public class User {
         this.surname = surname;
         this.login = login;
     }
-//    public UserDTO toDTO() {
-//        return new UserDTO(this.name, this.surname, this.login);
-//    }
-
     public String getName() {
         return name;
     }
